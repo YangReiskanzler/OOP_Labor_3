@@ -10,6 +10,8 @@ public abstract class RoundDrawableObject {
     public int color;
     public float g;
 
+
+
     RoundDrawableObject(PApplet iwindow, float ixpos, float iypos, float idiameter, float ispeedX, float ispeedY, int icolor) {
         window= iwindow;
         xpos = ixpos;
