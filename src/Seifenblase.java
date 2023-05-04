@@ -9,6 +9,7 @@ public class Seifenblase extends RoundDrawableObject {
 
     @Override
     public void collision(RoundDrawableObject other) {
+
     }
 
     @Override

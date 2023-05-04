@@ -1,5 +1,7 @@
 import processing.core.PApplet;
 
+import java.util.Random;
+
 public class Dornenball extends RoundDrawableObject {
     public float innerDiameter;
     public int anzDornen;
@@ -8,6 +10,9 @@ public class Dornenball extends RoundDrawableObject {
         super(iwindow, ixpos, iypos, idiameter, ispeedX, ispeedY, icolor);
         innerDiameter = iinnerDiameter;
         anzDornen = ianzDornen;
+        Random rnd = new Random();
+        xpos = rnd.nextFloat(101,701);
+        ypos = rnd.nextFloat(101, 701);
     }
 
 
