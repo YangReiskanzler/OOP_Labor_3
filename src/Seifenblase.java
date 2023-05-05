@@ -9,7 +9,11 @@ public class Seifenblase extends RoundDrawableObject {
 
     @Override
     public void collision(RoundDrawableObject other) {
-
+        if(diameter/2 + 35 <= diameter/2 + 50 ) {
+           zerplatzen = true;
+        } else {
+            zerplatzen = false;
+        }
     }
 
     @Override
