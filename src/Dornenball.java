@@ -29,6 +29,7 @@ public class Dornenball extends RoundDrawableObject {
 
     @Override
     void male() {
+        window.fill(50,255);
         window.circle((float) xpos, (float) ypos, (float) diameter);
         window.beginShape();
         for (int i = 0; i <= anzDornen; i++) {

@@ -8,15 +8,16 @@ public class Seifenblase extends RoundDrawableObject {
     }
 
     @Override
-    public void collision(RoundDrawableObject other) {
-        if (other instanceof Dornenball) {
-            if ( xpos - diameter / 2 < 0 ||
-                    ypos - diameter / 2 < 0 ||
-                    ypos + diameter / 2 < window.height ||
-                    xpos + diameter/ 2 < window.width ||
-            Math.sqrt(Math.pow(other.xpos - xpos, 2) + Math.pow(other.ypos - ypos, 2)) < diameter / 2) {
-                zerplatzen = true;
-            }
+    void collision(RoundDrawableObject other) {
+        if (xpos - diameter / 2 < 0 ||
+                xpos + diameter / 2 > window.width ||
+                ypos - diameter / 2 < 0 ||
+                ypos + diameter / 2 > window.height
+        ) {
+            zerplatzen = true;
+        }
+        if (other instanceof Dornenball && Math.sqrt(Math.pow(other.xpos - xpos, 2) + Math.pow(other.ypos - ypos, 2)) < (diameter + ((Dornenball) other).innerDiameter) / 2) {
+            zerplatzen = true;
         }
     }
 
@@ -28,11 +29,6 @@ public class Seifenblase extends RoundDrawableObject {
         speedY = speedY + g * t;
         xpos = xpos + speedX * t;
         ypos = ypos + speedY * t;
-        if (ypos > window.height - diameter / 2 || ypos < 0 + diameter / 2 || xpos > window.width - diameter / 2 || xpos < 0 + diameter / 2) {
-            zerplatzen = true;
-        } else {
-            zerplatzen = false;
-        }
         if (zerplatzen == true) {
             return 0;
         } else {
@@ -43,7 +39,9 @@ public class Seifenblase extends RoundDrawableObject {
     @Override
     public void male() {
         if (zerplatzen == false) {
+            window.fill(color);
             window.circle((float) xpos, (float) ypos, (float) diameter);
+        } else {
         }
     }
 
