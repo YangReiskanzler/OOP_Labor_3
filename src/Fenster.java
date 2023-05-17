@@ -1,10 +1,10 @@
 import processing.core.PApplet;
-
-import java.awt.event.MouseEvent;
+import processing.event.MouseEvent;
 
 public class Fenster extends PApplet {
-    RoundDrawableObject[] drawableObject = new Seifenblase[]{new Seifenblase(this, 100, 100, 50, 14, 14, 4)};
+    RoundDrawableObject[] drawableObject = new Seifenblase[]{new Seifenblase(this, 100, 100, 50, 3, 0, 4)};
     RoundDrawableObject[] drawableObject1 = new Dornenball[5];
+    int Punkte;
     @Override
     public void settings() {
 
@@ -24,11 +24,17 @@ public class Fenster extends PApplet {
         for (int x = 0; x  < drawableObject1.length; x++) {
             drawableObject1[x].male();
         }
-
+        fill(0);
+        Punkte = Punkte + drawableObject[0].move(0.5f);
+        textSize(25);
+        text("Punkte: " + Punkte, 10, 30);
     }
+    @Override
     public void mousePressed(MouseEvent event) {
-        event.getX();
-        event.getY();
+        for (int i = 0; i < drawableObject.length; i++) {
+            if (drawableObject[i] instanceof Seifenblase)
+                ((Seifenblase) drawableObject[i]).pusten(event.getX(), event.getY());
+        }
     }
 
     private class Random {

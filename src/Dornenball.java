@@ -19,7 +19,8 @@ public class Dornenball extends RoundDrawableObject {
     @Override
     void collision(RoundDrawableObject other) {
 
-    }
+        }
+
 
     @Override
     int move(float t) {
